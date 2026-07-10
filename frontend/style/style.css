@@ -34,37 +34,39 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 80px; 
+    padding: 25px 80px; 
     position: absolute;
     top: 0;
     width: 100%;
+    background: rgba(51, 51, 51, 0.65);
     z-index: 10;
+    backdrop-filter: blur(10px);
 }
 
 .logo-container img {
-    height: 24px; 
+    height: 30px; 
     width: auto;
-    color: #ffffff;
-    font-weight: 700;
-    letter-spacing: 2px;
+    display: block;
 }
 
 nav {
     display: flex;
-    gap: 40px;
+    justify-content: flex-end; 
+    align-items: felx-start;
+    gap: 64px;
 }
 
 nav a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 2px;
-    opacity: 0.4;
+    opacity: 0.6;
     transition: opacity 0.3s ease;
 }
 
-nav a.active, nav a:hover {
+nav a.hover, nav a:active {
     opacity: 1; 
 }
 
@@ -79,17 +81,20 @@ main {
 
 .hero-box {
     position: relative;
-    width: 660px;  
-    height: 400px; 
+    width: 90%;  
+    max-width: 750px;
+    height: 450px; 
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 
 .bracket {
     position: absolute;
-    width: 80px;  
+    width: 12%;  
+    max-width: 80px;
     height: 100%; 
     border: 2px solid #ffffff; 
 }
@@ -112,21 +117,24 @@ main {
 /*TEXT STYLE & SMOOTH FADE-IN*/
 .text-content {
     text-align: center;
+    width: 80%;
     opacity: 0; 
     animation: fadeInText 1s ease-out 1.2s forwards; 
 }
 
 .text-content h1 {
-    font-size: 76px;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
-    letter-spacing: 14px;
+    font-size: clamp(36px, 8vw, 84px);
+    letter-spacing: 0.18em; 
+    text-indent: 0.18em;
     margin-bottom: 8px;
-    text-indent: 14px; 
+    line-height: 1.1;
 }
 
 .text-content p {
-    font-size: 11px;
-    letter-spacing: 3px;
+    font-size: clamp(9px, 1.5vw, 12px);
+    letter-spacing: 4px;
     opacity: 0.4;
 }
 
@@ -158,7 +166,7 @@ main {
 /*ANIMATION LOGIC (KEYFRAMES)*/
 @keyframes openLeft {
     0% {
-        transform: translateX(250px); 
+        transform: translateX(45%); 
     }
     100% {
         transform: translateX(0); 
@@ -167,7 +175,7 @@ main {
 
 @keyframes openRight {
     0% {
-        transform: translateX(-250px); 
+        transform: translateX(-45%); 
     }
     100% {
         transform: translateX(0); 
