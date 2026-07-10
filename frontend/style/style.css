@@ -6,15 +6,17 @@
 }
 
 body {
-    background-color: #0b0b0b; /* Sobrang dilim na background tulad ng sa Figma mo */
+    background-color: #0b0b0b; 
+    background-image: url('../assets/homepage_bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #ffffff;
     font-family: 'Inter', -apple-system, sans-serif;
     height: 100vh;
     overflow: hidden;
-    position: relative;
 }
 
-/* Gagawa tayo ng subtle gradient overlay para magaya ang lagapak ng liwanag sa Figma background */
 body::before {
     content: "";
     position: absolute;
@@ -22,7 +24,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(165, 101, 101, 0.03) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.5) 80%);
     pointer-events: none;
     z-index: 1;
 }
@@ -32,16 +34,15 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 80px; /* Nilalayo sa gilid tulad ng screen design mo */
+    padding: 40px 80px; 
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 10;
 }
 
-/* Istilo para sa logo text o image sa kaliwa */
 .logo-container img {
-    height: 24px; /* Maliit at eleganteng pagkakalapat */
+    height: 24px; 
     width: auto;
     color: #ffffff;
     font-weight: 700;
@@ -59,15 +60,15 @@ nav a {
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 2px;
-    opacity: 0.4; /* Grayish na kulay kapag hindi naka-select */
+    opacity: 0.4;
     transition: opacity 0.3s ease;
 }
 
 nav a.active, nav a:hover {
-    opacity: 1; /* Puti kapag naka-active o tinutukan ng mouse */
+    opacity: 1; 
 }
 
-/*HERO BOX & THE CORNER BRACKETS (Ang Nawawalang Guhit)*/
+/*HERO BOX & THE CORNER BRACKETS*/
 main {
     display: flex;
     justify-content: center;
@@ -78,42 +79,41 @@ main {
 
 .hero-box {
     position: relative;
-    width: 660px;  /* Ang eksaktong lapad ng brackets mo */
-    height: 400px; /* Ang eksaktong taas ng brackets mo */
+    width: 660px;  
+    height: 400px; 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Gagawa tayo ng totoong border lines gamit ang CSS borders */
+
 .bracket {
     position: absolute;
-    width: 80px;  /* Gaano kalawak ang kanto ng brackets mo pahalang */
-    height: 100%; /* Sinasakop ang buong taas ng box */
-    border: 2px solid #ffffff; /* Puting linya */
+    width: 80px;  
+    height: 100%; 
+    border: 2px solid #ffffff; 
 }
 
-/* KALIWANG BRACKET ([) */
+/* LEFT BRACKET ([) */
 .bracket-left {
     left: 0;
-    border-right: none; /* Tinatanggal ang kanang guhit */
-    /* Magsisimula sa gitna, bubuka pakaliwa gamit ang keyframes sa dulo */
+    border-right: none; 
     animation: openLeft 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* KANANG BRACKET (]) */
+/* RIGHT BRACKET (]) */
 .bracket-right {
     right: 0;
-    border-left: none; /* Tinatanggal ang kaliwang guhit */
-    /* Magsisimula sa gitna, bubuka pakanan */
+    border-left: none; 
+    
     animation: openRight 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /*TEXT STYLE & SMOOTH FADE-IN*/
 .text-content {
     text-align: center;
-    opacity: 0; /* Nakatago muna sa simula */
-    animation: fadeInText 1s ease-out 1.2s forwards; /* Lalabas pagkatapos magbukas ng brackets */
+    opacity: 0; 
+    animation: fadeInText 1s ease-out 1.2s forwards; 
 }
 
 .text-content h1 {
@@ -121,7 +121,7 @@ main {
     font-weight: 600;
     letter-spacing: 14px;
     margin-bottom: 8px;
-    text-indent: 14px; /* Para saktong sentro kahit may letter-spacing */
+    text-indent: 14px; 
 }
 
 .text-content p {
@@ -158,19 +158,19 @@ main {
 /*ANIMATION LOGIC (KEYFRAMES)*/
 @keyframes openLeft {
     0% {
-        transform: translateX(250px); /* Nagsisimula nang magkadikit sa gitna */
+        transform: translateX(250px); 
     }
     100% {
-        transform: translateX(0); /* Uusog pabalik sa totoong pwesto sa kaliwa */
+        transform: translateX(0); 
     }
 }
 
 @keyframes openRight {
     0% {
-        transform: translateX(-250px); /* Nagsisimula nang magkadikit sa gitna */
+        transform: translateX(-250px); 
     }
     100% {
-        transform: translateX(0); /* Uusog pabalik sa totoong pwesto sa kanan */
+        transform: translateX(0); 
     }
 }
 
