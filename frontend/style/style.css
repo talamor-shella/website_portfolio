@@ -34,9 +34,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 80px; 
+    padding: 0px 80px 0px 10px; 
     position: absolute;
     top: 0;
+    height: 90px;
+    left: 0;
     width: 100%;
     background: rgba(51, 51, 51, 0.65);
     z-index: 10;
@@ -44,7 +46,7 @@ header {
 }
 
 .logo-container img {
-    height: 30px; 
+    height: 100px; 
     width: auto;
     display: block;
 }
@@ -82,8 +84,8 @@ main {
 .hero-box {
     position: relative;
     width: 90%;  
-    max-width: 750px;
-    height: 450px; 
+    max-width: 1000px;
+    height: 600px; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -96,14 +98,14 @@ main {
     width: 12%;  
     max-width: 80px;
     height: 100%; 
-    border: 2px solid #ffffff; 
+    border: 5px solid #ffffff; 
 }
 
 /* LEFT BRACKET ([) */
 .bracket-left {
     left: 0;
     border-right: none; 
-    animation: openLeft 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: openLeft 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /* RIGHT BRACKET (]) */
@@ -111,7 +113,7 @@ main {
     right: 0;
     border-left: none; 
     
-    animation: openRight 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: openRight 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 /*TEXT STYLE & SMOOTH FADE-IN*/
@@ -141,32 +143,42 @@ main {
 /*SOCIAL LINKS (BOTTOM LEFT)*/
 .social-links {
     position: absolute;
-    bottom: 50px;
-    left: 80px;
+    bottom: clamp(30px, 5vh, 50px);
+    left: clamp(30px, 6vw, 80px);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: clamp(15px, 2.5vh, 24px);
     z-index: 5;
 }
 
 .social-links a {
     color: #ffffff;
-    opacity: 0.4;
-    width: 20px;
-    height: 20px;
-    display: block;
+    opacity: 1;
+    width: clamp(32px, 4.5vw, 52px);  
+    height: clamp(32px, 4.5vw, 52px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a img {
+    width: 150%;
+    height: 150%;
+    object-fit: contain;
+    display: block;
 }
 
 .social-links a:hover {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 /*ANIMATION LOGIC (KEYFRAMES)*/
 @keyframes openLeft {
     0% {
-        transform: translateX(45%); 
+        transform: translateX(300%); 
     }
     100% {
         transform: translateX(0); 
@@ -175,7 +187,7 @@ main {
 
 @keyframes openRight {
     0% {
-        transform: translateX(-45%); 
+        transform: translateX(-300%); 
     }
     100% {
         transform: translateX(0); 
