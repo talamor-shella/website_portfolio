@@ -85,7 +85,8 @@ main {
     position: relative;
     width: 90%;  
     max-width: 1000px;
-    height: 600px; 
+    height: 52vh; 
+    max-height: 460px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +99,7 @@ main {
     width: 12%;  
     max-width: 80px;
     height: 100%; 
-    border: 5px solid #ffffff; 
+    border: clamp(3px, 0.35vw, 5px) solid #ffffff;
 }
 
 /* LEFT BRACKET ([) */
@@ -138,8 +139,27 @@ main {
     font-size: clamp(9px, 1.5vw, 12px);
     letter-spacing: 4px;
     opacity: 0.4;
+    margin-bottom: 40px;
 }
 
+.about-me-btn {
+    display: inline-block;
+    padding: 14px 48px; 
+    background: rgba(255, 255, 255, 0.06); 
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 4px; 
+    transition: background 0.3s ease, transform 0.3s ease; 
+}
+
+/* HOVER EFFECT (Kapag itinapat ang mouse) */
+.about-me-btn:hover {
+    background: rgba(255, 255, 255, 0.12); 
+    transform: scale(1.03); 
+}
 /*SOCIAL LINKS (BOTTOM LEFT)*/
 .social-links {
     position: absolute;
