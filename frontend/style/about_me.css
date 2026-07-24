@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Helvetica Now';
+    src: url('../assets/fonts/HelveticaNow-Bold.ttf') format('truetype'); 
+    font-weight: bold;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
