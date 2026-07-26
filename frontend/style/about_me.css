@@ -85,8 +85,9 @@ nav a {
     transition: opacity 0.3s ease;
 }
 
-nav a.hover, nav a:active {
-    opacity: 1; 
+nav a:hover, 
+nav a.active {
+    opacity: 1;
 }
 
 
