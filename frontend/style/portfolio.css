@@ -1,0 +1,291 @@
+@font-face {
+    font-family: 'Monument Extended';
+    src: url('../assets/fonts/MonumentExtended_Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Now';
+    src: url('../assets/fonts/HelveticaNow-Bold.ttf') format('truetype'); 
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b0b0b; 
+    background-image: url('../assets/homepage_bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    font-family: 'Inter', -apple-system, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.5) 80%);
+    pointer-events: none;
+    z-index: 1;
+}
+/* ==========================================================================
+   2. HEADER & NAVIGATION OVERLAY
+   ========================================================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px 0 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: rgba(51, 51, 51, 0.65); /* Requested custom header color */
+    backdrop-filter: blur(10px);
+    z-index: 20;
+}
+
+.logo-container img {
+    height: 65px;
+    width: auto;
+    display: block;
+}
+
+nav {
+    display: flex;
+    gap: 48px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+nav a:hover, 
+nav a.active {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   3. PORTFOLIO CAROUSEL SECTION (GITNA)
+   ========================================================================== */
+.portfolio-page-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.portfolio-carousel-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 1400px;
+    margin-top: 0; 
+    z-index: 10; 
+    opacity: 0;
+    pointer-events: none; 
+    transform: translateY(40px); 
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.portfolio-carousel-section.active {
+    opacity: 1;
+    pointer-events: auto; 
+    transform: translateY(-80px);
+    z-index: 99999 !important;
+}
+
+/* Horizontal Deck of papers */
+.cards-grid-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0 !important; 
+    width: max-content;
+    margin: 0 auto;
+}   
+
+/* Individual Paper Card Framework */
+.document-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px; 
+    flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
+    margin-left: -110px;  
+    margin-right: -110px;
+}
+
+.document-card:hover {
+    transform: translateY(-10px);   
+    z-index: 10; 
+    filter: brightness(1.1) drop-shadow(0 0 25px rgba(255, 255, 255, 0.17));
+}
+
+.paper-image-holder {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1px;
+}
+
+.paper-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.5));
+}
+
+.inner-paper-text {
+    position: absolute;
+    top: 55%; 
+    left: 49%;
+    transform: translate(-50%, -50%);
+    font-family: 'Monument Extended', sans-serif;
+    font-weight: 400; 
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.document-sub-label {
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    color: #a6a6a6;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+    
+}
+
+/* ==========================================================================
+   4. BOTTOM SHORTCUT FOLDER
+   ========================================================================== */
+.bottom-folder-navigation {
+    position: absolute;
+    bottom: 130px; 
+    right: 15px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 9999; 
+}
+
+.portfolio-back-folder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    width: 400px;
+    text-align: center;
+    position: relative; 
+    display: inline-flex; 
+    transition: transform 0.2s ease-in-out; 
+}
+
+.portfolio-back-folder:hover {
+    transform: scale(1.08); 
+}
+
+.folder-icon-box img {
+    width: 400px; 
+    height: auto;
+    margin-bottom: -40px; 
+    opacity: 0.67;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.portfolio-back-folder:hover .folder-icon-box img {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2)); 
+}
+
+.folder-label-text {
+    color: #ffffff;
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 15px; 
+    font-weight: bold;
+    letter-spacing: 1.5px; 
+    line-height: 1.3;
+    text-transform: uppercase; 
+    opacity: 0.6; 
+    transition: opacity 0.2s ease;
+    width: 100%;
+    display: block;
+    text-align: center;
+    position: relative;
+    left: 10px;
+}
+    
+.portfolio-back-folder:hover .folder-label-text {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   5. SOCIAL LINKS (BOTTOM-LEFT CORNER FIXED POSITION)
+   ========================================================================== */
+.social-links {
+    position: absolute;
+    bottom: clamp(30px, 5vh, 50px);
+    left: clamp(30px, 6vw, 80px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 2.5vh, 24px);
+    z-index: 5;
+}
+
+.social-links a {
+    color: #ffffff;
+    opacity: 1;
+    width: clamp(32px, 4.5vw, 52px);  
+    height: clamp(32px, 4.5vw, 52px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a img {
+    width: 150%;
+    height: 150%;
+    object-fit: contain;
+    display: block;
+}
+
+.social-links a:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
