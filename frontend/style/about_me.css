@@ -137,8 +137,8 @@ nav a.active {
    ========================================================================== */
 .desktop-shortcuts {
     position: absolute;
-    left: 360px; 
-    top: 210px; 
+    left: 410px; 
+    top: 300px; 
     display: flex;
     flex-direction: column;
     gap: 30px; 
