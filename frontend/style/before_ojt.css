@@ -161,7 +161,7 @@ nav a.active {
 
 .center-banner-group {
     position: absolute;
-    top: 58%;          
+    top: 50%;          
     left: 50%;
     width: 420px;
     height: 250px;
@@ -180,23 +180,20 @@ nav a.active {
 
 /*6. BANNER TEXT OVERLAY SYSTEM*/
 .banner-wrapper {
-    position: relative; 
+    position: absolute; 
     display: block;
-    margin: 0 auto;
 }
 
 .before-wrapper {
-    position: absolute;
-    top: 120px;
-    left: 43%;
-    width: 420px;
+    top: -20px;            
+    left: 40%;
+    width: 400px;
     transform: translateX(-50%); 
 }
 
 .ojt-wrapper {
-    position: absolute;
-    top: 210px;     
-    left: 45%;
+    top: 60px;         
+    left: 43%;
     width: 220px;
     transform: translateX(-50%);
 }
@@ -216,29 +213,55 @@ nav a.active {
 }
 
 .before-wrapper .banner-text {
-    left: 63%;
+    left: 64%;
     top: 40%;
 }
 
 .ojt-wrapper .banner-text {
     left: 72%;
-    top: 57%;
+    top: 58%;
 }
 
 /*7. ORBITING FOLDERS ARCHITECTURE & HOVERS*/
+
+.spotlight-workspace {
+    position: relative;
+    width: 1100px; 
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab; 
+    user-select: none;
+}
+
+.spotlight-workspace:active {
+    cursor: grabbing;
+}
+
+.orbit-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
 .orbit-folder {
     position: absolute;
+    top: 50%;  
+    left: 50%; 
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 120px;
+    width: 120px; 
     cursor: pointer;
-    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.25s ease;
+    transition: transform 0.1s linear, opacity 0.3s ease, filter 0.25s ease;
 }
 
+
 .orbit-folder img {
-    width: 100px;
+    width: 200px;
     height: auto;
     opacity: 0.8;
     filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.5));
@@ -251,63 +274,22 @@ nav a.active {
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 1px;
-    margin-top: 8px;
+    margin-top: -15px;
     text-transform: uppercase;
     transition: color 0.2s ease;
+    white-space: nowrap;
 }
 
 /* Folder Hover Physics */
-.orbit-folder:hover {
-    transform: scale(1.1);
-}
-
 .orbit-folder:hover img {
     opacity: 1;
-    filter: brightness(1.15) drop-shadow(0 0 15px rgba(255, 255, 255, 0.25));
+    filter: brightness(1.15) drop-shadow(0 0 18px rgba(255, 255, 255, 0.35));
 }
 
 .orbit-folder:hover .folder-title {
     color: #ffffff;
 }
 
-/* 8. POLAR COORDINATES ALIGNMENT (HEXAGON PLACE SYSTEM)*/
-.folder-top {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.folder-top:hover {
-    transform: translateX(-50%) scale(1.1);
-}
-
-.folder-top-right {
-    top: 80px;
-    right: 40px;
-}
-
-.folder-bottom-right {
-    bottom: 120px;
-    right: 40px;
-}
-
-.folder-bottom {
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.folder-bottom:hover {
-    transform: translateX(-50%) scale(1.1);
-}
-
-.folder-bottom-left {
-    bottom: 120px;
-    left: 40px;
-}
-
-.folder-top-left {
-    top: 80px;
-    left: 40px;
-}
 
 /* ==========================================================================
    9. SOCIAL LINKS (BOTTOM-LEFT CORNER FIXED POSITION)
