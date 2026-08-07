@@ -1,0 +1,347 @@
+@font-face {
+    font-family: 'Monument Extended';
+    src: url('../assets/fonts/MonumentExtended_Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Now';
+    src: url('../assets/fonts/HelveticaNow-Bold.ttf') format('truetype'); 
+    font-weight: bold;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0b0b0b; 
+    background-image: url('../assets/homepage_bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    font-family: 'Inter', -apple-system, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.5) 80%);
+    pointer-events: none;
+    z-index: 1;
+}
+/*2. HEADER & NAVIGATION OVERLAY*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px; 
+    position: absolute;
+    top: 0;
+    height: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(51, 51, 51, 0.65);
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.logo-container img {
+    height: 50px; 
+    width: auto;
+    display: block;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: felx-start;
+    gap: 64px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+nav a:hover, 
+nav a.active {
+    opacity: 1;
+}
+
+/*3. MAIN SUB-PORTFOLIO CONTAINER*/
+.sub-portfolio-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 5;
+    background-image: 
+        radial-gradient(circle at center, rgba(215, 207, 207, 0.3) 0%, rgba(0, 0, 0, 0) 10%),
+        radial-gradient(circle at center, rgba(0, 0, 0, 0) 20%, rgba(11, 11, 11, 0.45) 30%),
+        url('../assets/homepage_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* GRADIENT OVERLAY*/
+.sub-portfolio-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at center, rgba(215, 207, 207, 0.4) 0%, rgba(0, 0, 0, 0) 35%),
+        radial-gradient(circle at center, rgba(0, 0, 0, 0) 60%, rgba(11, 11, 11, 0.65) 70%);
+    z-index: 1; 
+    pointer-events: none; 
+}
+
+/*4. NAVIGATION BACK LINK*/
+.back-navigation {
+    position: absolute;
+    top: 100px;
+    left: 30px;
+    z-index: 9999;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Helvetica Now', 'Helvetica Neue', Helvetica, Arial, sans-serif;   
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.back-btn img {
+    height: 45px;
+    width: auto;
+    display: block;
+}
+
+.back-btn:hover {
+    opacity: 0.8;
+    transform: translateX(-6px);
+}
+
+/*5. CENTRAL SPOTLIGHT WORKSPACE & BANNERS*/
+.spotlight-workspace {
+    position: relative;
+    width: 850px; 
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-banner-group {
+    position: absolute;
+    top: 58%;          
+    left: 50%;
+    width: 420px;
+    height: 250px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.banner-title {
+    width: 130%;       
+    height: auto;      
+    display: block;    
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.6));
+}
+
+
+/*6. BANNER TEXT OVERLAY SYSTEM*/
+.banner-wrapper {
+    position: relative; 
+    display: block;
+    margin: 0 auto;
+}
+
+.before-wrapper {
+    position: absolute;
+    top: 120px;
+    left: 43%;
+    width: 420px;
+    transform: translateX(-50%); 
+}
+
+.ojt-wrapper {
+    position: absolute;
+    top: 210px;     
+    left: 45%;
+    width: 220px;
+    transform: translateX(-50%);
+}
+
+.banner-text {
+    position: absolute;
+    transform: translate(-50%, -50%); 
+    font-family: 'Monument Extended', sans-serif;
+    font-size: 45px; 
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #000;
+    text-shadow: 0 0 1px #000;
+    text-transform: uppercase;
+    pointer-events: none; 
+    z-index: 2;
+}
+
+.before-wrapper .banner-text {
+    left: 63%;
+    top: 40%;
+}
+
+.ojt-wrapper .banner-text {
+    left: 72%;
+    top: 57%;
+}
+
+/*7. ORBITING FOLDERS ARCHITECTURE & HOVERS*/
+.orbit-folder {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.25s ease;
+}
+
+.orbit-folder img {
+    width: 100px;
+    height: auto;
+    opacity: 0.8;
+    filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.5));
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.orbit-folder .folder-title {
+    color: #a6a6a6;
+    font-family: 'Helvetica Now', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+/* Folder Hover Physics */
+.orbit-folder:hover {
+    transform: scale(1.1);
+}
+
+.orbit-folder:hover img {
+    opacity: 1;
+    filter: brightness(1.15) drop-shadow(0 0 15px rgba(255, 255, 255, 0.25));
+}
+
+.orbit-folder:hover .folder-title {
+    color: #ffffff;
+}
+
+/* 8. POLAR COORDINATES ALIGNMENT (HEXAGON PLACE SYSTEM)*/
+.folder-top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.folder-top:hover {
+    transform: translateX(-50%) scale(1.1);
+}
+
+.folder-top-right {
+    top: 80px;
+    right: 40px;
+}
+
+.folder-bottom-right {
+    bottom: 120px;
+    right: 40px;
+}
+
+.folder-bottom {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.folder-bottom:hover {
+    transform: translateX(-50%) scale(1.1);
+}
+
+.folder-bottom-left {
+    bottom: 120px;
+    left: 40px;
+}
+
+.folder-top-left {
+    top: 80px;
+    left: 40px;
+}
+
+/* ==========================================================================
+   9. SOCIAL LINKS (BOTTOM-LEFT CORNER FIXED POSITION)
+   ========================================================================== */
+.social-links {
+    position: absolute;
+    bottom: clamp(30px, 5vh, 50px);
+    left: clamp(30px, 6vw, 30px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 2.5vh, 24px);
+    z-index: 5;
+}
+
+.social-links a {
+    color: #ffffff;
+    opacity: 1;
+    width: clamp(32px, 4.5vw, 52px);  
+    height: clamp(32px, 4.5vw, 52px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.social-links a:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
