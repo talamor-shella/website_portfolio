@@ -330,3 +330,72 @@ document.addEventListener("DOMContentLoaded", () => {
     updateFolderPositions();
 
 });
+
+/*PDF VIEWER*/
+
+const pdfModal = document.getElementById("pdfModal");
+const pdfFrame = document.getElementById("pdfFrame");
+const pdfClose = document.getElementById("pdfClose");
+
+const orbitFolders = document.querySelectorAll(".orbit-folder");
+
+
+/* OPEN PDF */
+
+orbitFolders.forEach(folder => {
+
+    folder.addEventListener("click", function (event) {
+
+        event.stopPropagation();
+
+        const pdfFile = this.dataset.pdf;
+
+        if (!pdfFile) {
+            return;
+        }
+
+        pdfFrame.src = pdfFile;
+
+        pdfModal.classList.add("active");
+
+    });
+
+});
+
+
+/* CLOSE PDF */
+
+function closePDF() {
+
+    pdfModal.classList.remove("active");
+
+    setTimeout(() => {
+        pdfFrame.src = "";
+    }, 250);
+
+}
+
+
+pdfClose.addEventListener("click", closePDF);
+
+
+/* CLOSE WHEN CLICKING OUTSIDE THE PDF */
+
+pdfModal.addEventListener("click", function (event) {
+
+    if (event.target === pdfModal) {
+        closePDF();
+    }
+
+});
+
+
+/* CLOSE WITH ESC KEY */
+
+document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape" && pdfModal.classList.contains("active")) {
+        closePDF();
+    }
+
+});
