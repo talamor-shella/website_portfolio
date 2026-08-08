@@ -290,9 +290,52 @@ nav a.active {
     color: #ffffff;
 }
 
+/*ORBIT NAVIGATION BUTTONS (LEFT & RIGHT ARROWS)*/
+.orbit-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 100; 
+    outline: none;
+    padding: 10px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.orbit-nav-btn img {
+    height: 55px; 
+    width: auto;
+    display: block;
+    opacity: 0.6;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover Effects */
+.orbit-nav-btn:hover img {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+}
+
+.arrow-left:hover {
+    transform: translateY(-50%) translateX(-5px);
+}
+
+.arrow-right:hover {
+    transform: translateY(-50%) translateX(5px);
+}
+
+.arrow-left {
+    left: 250px;
+}
+
+.arrow-right {
+    right: 250px;
+}
 
 /* ==========================================================================
-   9. SOCIAL LINKS (BOTTOM-LEFT CORNER FIXED POSITION)
+   10. SOCIAL LINKS (BOTTOM-LEFT CORNER FIXED POSITION)
    ========================================================================== */
 .social-links {
     position: absolute;

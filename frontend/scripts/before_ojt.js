@@ -9,66 +9,75 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalFolders = folders.length;
 
 
+    // NAVIGATION BUTTONS
+
+    const leftButton =
+        document.querySelector(".arrow-left");
+
+    const rightButton =
+        document.querySelector(".arrow-right");
+
 
     // HEXAGON SIZE
-    const radiusX = 300;
-    const radiusY = 190;
+
+    const radiusX = 360;
+    const radiusY = 200;
 
 
     // Hidden slot ABOVE the hexagon
     const hiddenY = -300;
 
 
-    // 6 visible positions
+    // Number of visible folders
     const visibleCount = 6;
 
 
     let currentStep = 0;
+
 
     // DRAG VARIABLES
 
     let isDragging = false;
     let startX = 0;
     let dragDistance = 0;
-
-    // Lower = more sensitive
     const stepSize = 70;
+
 
     // HEXAGON POSITIONS
 
     const hexagonPositions = [
 
-        // TOP
+        // 1. TOP
         {
             x: 0,
             y: -radiusY
         },
 
-        // TOP RIGHT
+        // 2. TOP RIGHT
         {
             x: radiusX * 0.866,
             y: -radiusY * 0.5
         },
 
-        // BOTTOM RIGHT
+        // 3. BOTTOM RIGHT
         {
             x: radiusX * 0.866,
             y: radiusY * 0.5
         },
 
-        // BOTTOM
+        // 4. BOTTOM
         {
             x: 0,
             y: radiusY
         },
 
-        // BOTTOM LEFT
+        // 5. BOTTOM LEFT
         {
             x: -radiusX * 0.866,
             y: radiusY * 0.5
         },
 
-        // TOP LEFT
+        // 6. TOP LEFT
         {
             x: -radiusX * 0.866,
             y: -radiusY * 0.5
@@ -78,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // UPDATE FOLDER POSITIONS
+
     function updateFolderPositions() {
 
         for (let i = 0; i < totalFolders; i++) {
@@ -87,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const position =
                 (i - currentStep + totalFolders) % totalFolders;
 
-            // SIX HEXAGON POSITIONS
+            // SIX VISIBLE HEXAGON POSITIONS
 
             if (position < visibleCount) {
 
@@ -104,7 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 folder.style.pointerEvents = "auto";
 
-
                 folder.style.zIndex =
                     20 + position;
 
@@ -112,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // HIDDEN TOP SLOT
+
             else if (position === visibleCount) {
 
                 folder.style.transform =
@@ -127,8 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
-            // EXTRA FOLDER
+            // EXTRA HIDDEN FOLDER
 
             else {
 
@@ -149,8 +158,78 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
+    // MOVE LEFT
+
+    function moveLeft() {
+
+        currentStep++;
+
+        if (currentStep >= totalFolders) {
+
+            currentStep = 0;
+
+        }
+
+        updateFolderPositions();
+
+    }
+
+    // MOVE RIGHT
+
+    function moveRight() {
+
+        currentStep--;
+
+        if (currentStep < 0) {
+
+            currentStep = totalFolders - 1;
+
+        }
+
+        updateFolderPositions();
+
+    }
+
+
+    // LEFT BUTTON
+
+    if (leftButton) {
+
+        leftButton.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            moveLeft();
+
+        });
+
+    }
+
+    // RIGHT BUTTON
+
+    if (rightButton) {
+
+        rightButton.addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            moveRight();
+
+        });
+
+    }
+
     // START DRAG
     container.addEventListener("mousedown", (e) => {
+
+        if (
+            e.target.closest(".arrow-left") ||
+            e.target.closest(".arrow-right")
+        ) {
+            return;
+        }
+
 
         isDragging = true;
 
@@ -183,18 +262,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // DRAG RIGHT
         if (dragDistance >= stepSize) {
 
-            currentStep--;
-
-            if (currentStep < 0) {
-
-                currentStep =
-                    totalFolders - 1;
-
-            }
+            moveRight();
 
             dragDistance = 0;
-
-            updateFolderPositions();
 
         }
 
@@ -202,17 +272,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // DRAG LEFT
         else if (dragDistance <= -stepSize) {
 
-            currentStep++;
-
-            if (currentStep >= totalFolders) {
-
-                currentStep = 0;
-
-            }
+            moveLeft();
 
             dragDistance = 0;
-
-            updateFolderPositions();
 
         }
 
@@ -224,6 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!isDragging) return;
 
+
         isDragging = false;
 
         dragDistance = 0;
@@ -231,6 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container.style.cursor = "grab";
 
     });
+
 
     // MOUSE WHEEL
     container.addEventListener(
@@ -243,13 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Scroll DOWN
             if (e.deltaY > 0) {
 
-                currentStep++;
-
-                if (currentStep >= totalFolders) {
-
-                    currentStep = 0;
-
-                }
+                moveLeft();
 
             }
 
@@ -257,19 +315,9 @@ document.addEventListener("DOMContentLoaded", () => {
             // Scroll UP
             else {
 
-                currentStep--;
-
-                if (currentStep < 0) {
-
-                    currentStep =
-                        totalFolders - 1;
-
-                }
+                moveRight();
 
             }
-
-
-            updateFolderPositions();
 
         },
         {
@@ -277,8 +325,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-
     // INITIAL DISPLAY
+    
     updateFolderPositions();
 
 });
