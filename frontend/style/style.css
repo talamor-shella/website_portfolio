@@ -1,4 +1,4 @@
-/*GLOBAL RESET & GRAIN BACKGROUND EFFECT*/
+/* GLOBAL RESET & GRAIN BACKGROUND EFFECT */
 * {
     margin: 0;
     padding: 0;
@@ -29,15 +29,15 @@ body::before {
     z-index: 1;
 }
 
-/*HEADER & NAVIGATION BAR*/
+/* HEADER & NAVIGATION BAR */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 40px; 
+    padding: 0 clamp(16px, 3vw, 40px); 
     position: absolute;
     top: 0;
-    height: 60px;
+    height: clamp(50px, 7vh, 65px);
     left: 0;
     width: 100%;
     background: rgba(51, 51, 51, 0.65);
@@ -46,7 +46,7 @@ header {
 }
 
 .logo-container img {
-    height: 70px; 
+    height: clamp(40px, 5.5vh, 65px); 
     width: auto;
     display: block;
 }
@@ -54,16 +54,16 @@ header {
 nav {
     display: flex;
     justify-content: flex-end; 
-    align-items: felx-start;
-    gap: 64px;
+    align-items: center;
+    gap: clamp(20px, 4vw, 64px);
 }
 
 nav a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 10px;
+    font-size: clamp(9px, 0.85vw, 11px);
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: clamp(1px, 0.15vw, 2px);
     opacity: 0.6;
     transition: opacity 0.3s ease;
 }
@@ -73,8 +73,7 @@ nav a.active {
     opacity: 1;
 }
 
-
-/*HERO BOX & THE CORNER BRACKETS*/
+/* HERO BOX & THE CORNER BRACKETS */
 main {
     display: flex;
     justify-content: center;
@@ -85,21 +84,17 @@ main {
 
 .hero-box {
     position: relative;
-    width: 90%;  
-    max-width: 1000px;
-    height: 52vh; 
-    max-height: 460px;
+    width: clamp(280px, 85vw, 950px);
+    height: clamp(300px, 48vh, 460px);
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
 }
 
-
 .bracket {
     position: absolute;
-    width: 12%;  
-    max-width: 80px;
+    width: clamp(35px, 9vw, 80px);
     height: 100%; 
     border: clamp(3px, 0.35vw, 5px) solid #ffffff;
 }
@@ -115,11 +110,10 @@ main {
 .bracket-right {
     right: 0;
     border-left: none; 
-    
     animation: openRight 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/*TEXT STYLE & SMOOTH FADE-IN*/
+/* TEXT STYLE & SMOOTH FADE-IN */
 .text-content {
     text-align: center;
     width: 80%;
@@ -130,55 +124,55 @@ main {
 .text-content h1 {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: clamp(36px, 8vw, 84px);
+    font-size: clamp(32px, 6.5vw, 80px);
     letter-spacing: 0.18em; 
     text-indent: 0.18em;
-    margin-bottom: 8px;
+    margin-bottom: clamp(4px, 1vh, 12px);
     line-height: 1.1;
 }
 
 .text-content p {
-    font-size: clamp(9px, 1.5vw, 12px);
-    letter-spacing: 4px;
+    font-size: clamp(8px, 1.1vw, 12px);
+    letter-spacing: clamp(2px, 0.3vw, 4px);
     opacity: 0.4;
-    margin-bottom: 40px;
+    margin-bottom: clamp(20px, 3.5vh, 36px);
 }
 
 .about-me-btn {
     display: inline-block;
-    padding: 14px 48px; 
+    padding: clamp(10px, 1.4vh, 14px) clamp(28px, 3.5vw, 48px); 
     background: rgba(255, 255, 255, 0.06); 
     color: #ffffff;
     text-decoration: none;
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: clamp(13px, 1.2vw, 17px);
     font-weight: 400;
     border-radius: 4px; 
     transition: background 0.3s ease, transform 0.3s ease; 
 }
 
-/* HOVER EFFECT (Kapag itinapat ang mouse) */
+/* HOVER EFFECT */
 .about-me-btn:hover {
     background: rgba(255, 255, 255, 0.12); 
     transform: scale(1.03); 
 }
-/*SOCIAL LINKS (BOTTOM LEFT)*/
+
+/* SOCIAL LINKS (BOTTOM LEFT) */
 .social-links {
     position: absolute;
-    bottom: clamp(30px, 5vh, 50px);
-    left: clamp(30px, 6vw, 30px);
+    bottom: clamp(24px, 4vh, 45px);
+    left: clamp(20px, 3vw, 35px);
     display: flex;
     flex-direction: column;
-    gap: clamp(15px, 2.5vh, 24px);
+    gap: clamp(12px, 2vh, 20px);
     z-index: 5;
 }
 
 .social-links a {
     color: #ffffff;
     opacity: 1;
-    width: clamp(32px, 4.5vw, 52px);  
-    height: clamp(32px, 4.5vw, 52px);
-
+    width: clamp(28px, 3.5vw, 42px);  
+    height: clamp(28px, 3.5vw, 42px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,10 +191,10 @@ main {
     transform: scale(1.15);
 }
 
-/*ANIMATION LOGIC (KEYFRAMES)*/
+/* ANIMATION LOGIC */
 @keyframes openLeft {
     0% {
-        transform: translateX(300%); 
+        transform: translateX(250%); 
     }
     100% {
         transform: translateX(0); 
@@ -209,7 +203,7 @@ main {
 
 @keyframes openRight {
     0% {
-        transform: translateX(-300%); 
+        transform: translateX(-250%); 
     }
     100% {
         transform: translateX(0); 
@@ -225,4 +219,4 @@ main {
         opacity: 1;
         transform: translateY(0);
     }
-}   
+}
