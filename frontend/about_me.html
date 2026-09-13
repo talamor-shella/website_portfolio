@@ -29,12 +29,13 @@
         </div>
 
         <div class="desktop-shortcuts">
-            <a href=" " class="folder-shortcut">
+
+            <div class="folder-shortcut orbit-folder" data-pdf="assets/before_ojt_pdfs/resume.pdf" style="cursor: pointer;">
                 <div class="folder-icon-wrapper">
                     <img src="assets/foldericon.png" alt="Folder">
                 </div>
                 <span class="folder-label">RESUME</span>
-            </a>
+            </div>
             
             <a href=portfolio.html class="folder-shortcut">
                 <div class="folder-icon-wrapper">
@@ -76,5 +77,24 @@
 
     </main>
 
+<!-- PDF VIEWER MODAL -->
+<div class="pdf-modal" id="pdfModal">
+
+    <div class="pdf-viewer">
+
+        <button class="pdf-close" id="pdfClose" aria-label="Close PDF">
+            &times;
+        </button>
+
+        <iframe
+            id="pdfFrame"
+            src=""
+            title="PDF Viewer">
+        </iframe>
+
+    </div>
+
+</div>
+    <script src="scripts/orbit.js"></script>
 </body>
 </html>
